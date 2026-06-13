@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_task_report_form" model="ir.ui.view">
+        <field name="name">task.report.form</field>
+        <field name="model">task.report</field>
+        <field name="arch" type="xml">
+            <form string="Search Consultation">
+                <group>
+                     <div>
+                            <label for="from_time" string="From"/>
+                            <field name="from_time" class="oe_inline"/>
+                            To
+                            <field name="to_time" class="oe_inline"/>
+                            <field name="project_task_ids" widget="many2many_tags"/>
+                        </div>
+
+
+                </group>
+                <footer>
+
+
+                    <button name="action_search_print" type="object" string="Print"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_task_report" model="ir.actions.act_window">
+        <field name="name">Task Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">task.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_task_report_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+
+    <menuitem id="menu_task_report"
+            name="Tasks Report"
+            action="action_task_report"
+            parent="project.menu_project_report"
+              sequence="40"/>
+            />
+
+
+</odoo>
